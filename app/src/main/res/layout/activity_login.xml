@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+        tools:context=".activity.login"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DPsStore"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textColor="@color/cardview_dark_background"
+        />
+
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/icondophins"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconaccount1" />
+        <EditText
+            android:layout_gravity="center"
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="user name"
+            android:textStyle="italic"
+            android:minHeight="48dp"
+            android:text="namlong"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconpassword" />
+        <EditText
+            android:layout_gravity="center"
+            android:id="@+id/edtPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="password"
+            android:textStyle="italic"
+            android:minHeight="48dp"
+            android:text="namlong"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Log in"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        />
+
+    <Button
+        android:id="@+id/btnRegis"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/black"
+        android:text="Sign Up"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
