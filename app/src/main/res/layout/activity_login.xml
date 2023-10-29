@@ -7,7 +7,10 @@
     android:padding="16dp"
     android:orientation="vertical"
         tools:context=".activity.login"
+    android:background="#1A1839"
     >
+
+
 
     <TextView
         android:layout_width="match_parent"
@@ -16,8 +19,8 @@
         android:textStyle="bold"
         android:textSize="30dp"
         android:gravity="center"
-        android:textColor="@color/cardview_dark_background"
-        />
+        android:textColor="#fff"
+        tools:ignore="HardcodedText,SpUsage" />
 
 
 
@@ -28,7 +31,39 @@
         android:src="@drawable/icondophins"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        />
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:textSize="30sp"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        tools:ignore="HardcodedText" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Do not have an account?"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <Button
+            android:id="@+id/btnRegis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="#1A1839"
+            android:text="Sign Up"
+            android:textColor="#448AFF"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -39,8 +74,11 @@
             android:layout_gravity="center"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/iconaccount1" />
+            android:src="@drawable/iconaccount"
+            tools:ignore="ContentDescription" />
         <EditText
+            android:textColor="#ccc"
+            android:textColorHint="#ccc"
             android:layout_gravity="center"
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
@@ -48,47 +86,66 @@
             android:hint="user name"
             android:textStyle="italic"
             android:minHeight="48dp"
-            android:text="namlong"/>
+            android:text="namlong"
+            tools:ignore="HardcodedText,TextFields,VisualLintTextFieldSize"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp">
 
         <ImageView
             android:layout_gravity="center"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/iconpassword" />
+            android:src="@drawable/iconpassword"
+            tools:ignore="ContentDescription" />
+
         <EditText
-            android:layout_gravity="center"
             android:id="@+id/edtPass"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="password"
-            android:textStyle="italic"
             android:minHeight="48dp"
-            android:text="namlong"/>
+            android:text="namlong"
+            android:textColor="#ccc"
+            android:textColorHint="#ccc"
+            android:textStyle="italic"
+            tools:ignore="Autofill,HardcodedText,TextFields" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/iconanhien"
+            tools:ignore="ContentDescription,ImageContrastCheck,VisualLintBounds" />
     </LinearLayout>
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Log in"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/black"
-        />
 
     <Button
-        android:id="@+id/btnRegis"
+        android:id="@+id/buttonquenmatkhau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1A1839"
+        android:text="Forgot password?"
+        android:textColor="#448AFF"
+        android:textSize="13dp"
+        tools:ignore="HardcodedText,SpUsage,TextSizeCheck" />
+
+    <Button
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/black"
-        android:text="Sign Up"
-        android:textColor="@color/white"/>
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#065FE6"
+        android:text="Log in"
+        android:textColor="@color/white"
+        tools:ignore="DuplicateSpeakableTextCheck,HardcodedText,VisualLintButtonSize" />
+
+
 
 </LinearLayout>

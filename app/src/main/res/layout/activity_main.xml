@@ -17,7 +17,7 @@
                 android:id="@+id/toolbarmanhinhchinh"
                 app:title="Home"
                 app:titleTextColor="#fff"
-                android:background="#6A6E6B"
+                android:background="#1A1839"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
             </androidx.appcompat.widget.Toolbar>
@@ -28,7 +28,7 @@
                 >
             </ViewFlipper>
             <LinearLayout
-                android:background="#808A81"
+                android:background="#1A1839"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -37,7 +37,7 @@
                     android:textStyle="italic"
                     android:textColor="#fff"
                     android:layout_margin="5dp"
-                    android:text="Products New"
+                    android:text="  Products New"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <androidx.recyclerview.widget.RecyclerView

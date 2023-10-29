@@ -1,19 +1,19 @@
 package com.example.btlapp.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.btlapp.R;
 import com.example.btlapp.model.Giohang;
@@ -21,6 +21,7 @@ import com.example.btlapp.model.Sanpham;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class ChiTietSanPham extends AppCompatActivity {
     Toolbar toolbarChitiet;
@@ -62,38 +63,35 @@ public class ChiTietSanPham extends AppCompatActivity {
     }
 
     private void EventButton() {
-        btndatmua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.manggiohang.size()>0){
-                    int sl=Integer.parseInt((spinner.getSelectedItem().toString()));
-                    boolean exists=false;
-                    for(int i = 0; i< MainActivity.manggiohang.size(); i++){
-                        if(MainActivity.manggiohang.get(i).getIdsp()==id){ // Kiểm tra id để update số lượng sản phẩm
-                            MainActivity.manggiohang.get(i).setSoluongsp(MainActivity.manggiohang.get(i).getSoluongsp()+sl);
-                            if(MainActivity.manggiohang.get(i).getSoluongsp()>=10){//set lại số lương sp nếu thêm sl quá 10
-                                MainActivity.manggiohang.get(i).setSoluongsp(10); // set lại số luong =10
-                            }
-                            MainActivity.manggiohang.get(i).setGiasp(Giachitiet* MainActivity.manggiohang.get(i).getSoluongsp());
-                            exists=true;
+        btndatmua.setOnClickListener(
+                v -> {
+            if (MainActivity.manggiohang.size()>0){
+                int sl=Integer.parseInt((spinner.getSelectedItem().toString()));
+                boolean exists=false;
+                for(int i = 0; i< MainActivity.manggiohang.size(); i++){
+                    if(MainActivity.manggiohang.get(i).getIdsp()==id){ // Kiểm tra id để update số lượng sản phẩm
+                        MainActivity.manggiohang.get(i).setSoluongsp(MainActivity.manggiohang.get(i).getSoluongsp()+sl);
+                        if(MainActivity.manggiohang.get(i).getSoluongsp()>=10){//set lại số lương sp nếu thêm sl quá 10
+                            MainActivity.manggiohang.get(i).setSoluongsp(10); // set lại số luong =10
                         }
+                        MainActivity.manggiohang.get(i).setGiasp((long) Giachitiet * MainActivity.manggiohang.get(i).getSoluongsp());
+                        exists=true;
                     }
-                    if (exists==false){
-                        //tính tổng tiền thanh toán
-                        int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-                        long Giamoi=soluong*Giachitiet;
-                        MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
-                    }
-
-                }else{
+                }
+                if (!exists){
+                    //tính tổng tiền thanh toán
                     int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-                    long Giamoi=soluong*Giachitiet;
+                    long Giamoi= (long) soluong *Giachitiet;
                     MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
                 }
-                Intent intent=new Intent(getApplicationContext(), com.example.btlapp.activity.Giohang.class);
-                startActivity(intent);
-            }
 
+            }else{
+                int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
+                long Giamoi= (long) soluong *Giachitiet;
+                MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
+            }
+            Intent intent=new Intent(getApplicationContext(), com.example.btlapp.activity.Giohang.class);
+            startActivity(intent);
         });
     }
 
@@ -102,18 +100,14 @@ public class ChiTietSanPham extends AppCompatActivity {
     private void CatchEventSpinner() {
         Integer[] soluong= new Integer[]{1,2,3,4,5,6,7,8,9,10};
         //gọi lại bản vẽ
-        ArrayAdapter<Integer> arrayAdapter=new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_dropdown_item,soluong);
+        ArrayAdapter<Integer> arrayAdapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, soluong);
         spinner.setAdapter(arrayAdapter); //truyen ve ban ve
     }
     //lay du lieu man hinh khac truyen cho man hinh nay
+    @SuppressLint("SetTextI18n")
     private void GetInformation() {
-//        int id=0;
-//        String Tenchitiet="";
-//        int Giachitet=0;
-//        String Hinhanhchitiet="";
-//        String Motachitiet="";
-//        int idsanpham=0;
         Sanpham sanpham= (Sanpham) getIntent().getSerializableExtra("thongtinsanpham");
+        assert sanpham != null;
         id=sanpham.getId();//gán dữ liệu cho các biến ở phía trên khai báo
         Tenchitiet=sanpham.getTensanpham();
         Giachitiet=sanpham.getGiasanpham();
@@ -134,23 +128,18 @@ public class ChiTietSanPham extends AppCompatActivity {
 
     private void ActionToolBar() {
         setSupportActionBar(toolbarChitiet);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbarChitiet.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbarChitiet.setNavigationOnClickListener(v -> finish());
     }
     //khởi tạo và gán các giá trị id vào thuộc tính
     private void Anhxa() {
-        toolbarChitiet=(Toolbar) findViewById(R.id.toolbarchitietsanpham);
-        imgChitiet=(ImageView) findViewById(R.id.imageviewchitietsanpham);
-        txttenspchitiet=(TextView) findViewById(R.id.textviewtenchitietsanpham);
-        txtgiaspchitiet = (TextView) findViewById(R.id.textviewgiachitietsanpham);
-        txtmotaspchitiet=(TextView) findViewById(R.id.textviewmotachitietsanpham);
-        spinner=(Spinner) findViewById(R.id.spinner);
-        btndatmua=(Button) findViewById(R.id.buttondatmua);
+        toolbarChitiet= findViewById(R.id.toolbarchitietsanpham);
+        imgChitiet= findViewById(R.id.imageviewchitietsanpham);
+        txttenspchitiet= findViewById(R.id.textviewtenchitietsanpham);
+        txtgiaspchitiet = findViewById(R.id.textviewgiachitietsanpham);
+        txtmotaspchitiet= findViewById(R.id.textviewmotachitietsanpham);
+        spinner= findViewById(R.id.spinner);
+        btndatmua= findViewById(R.id.buttondatmua);
 
 
     }

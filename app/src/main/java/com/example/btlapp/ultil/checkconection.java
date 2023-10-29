@@ -5,10 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import com.google.android.gms.common.internal.Objects;
-
-import java.util.ConcurrentModificationException;
- //kiem tra ket noi thiet bi
+ /** @noinspection deprecation*/ //kiem tra ket noi thiet bi
 public class checkconection {
     public static boolean haveNetworkConnection(Context context) {
         boolean haveConnectedWifi = false;

@@ -18,13 +18,8 @@ public class Loaisp {
     public String getTenloaisp(){
         return Tenloaisp;
     }
-    public void setTenloaisp(String tenloaisp){
-        Tenloaisp=tenloaisp;
-    }
+
     public String getHinhanhloaisp(){
         return  Hinhanhloaisp;
-    }
-    public void setHinhanhloaisp(String hinhanhloaisp) {
-        Hinhanhloaisp = hinhanhloaisp;
     }
 }

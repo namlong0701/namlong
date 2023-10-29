@@ -1,5 +1,6 @@
 package com.example.btlapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,9 +18,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class LaptopAdapter  extends BaseAdapter {
-    private Context context;
-    private ArrayList<Sanpham> arraylaptop;
-    private LayoutInflater inflater;
+    private final Context context;
+    private final ArrayList<Sanpham> arraylaptop;
+    private final LayoutInflater inflater;
 
     public LaptopAdapter(Context context, ArrayList<Sanpham> arraylaptop) {
         this.context = context;
@@ -47,6 +48,7 @@ public class LaptopAdapter  extends BaseAdapter {
         public ImageView imglaptop;
     }
 
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LaptopAdapter.ViewHolder viewHolder;

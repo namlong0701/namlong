@@ -3,17 +3,18 @@ package com.example.btlapp.model;
 import android.graphics.Rect;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemDecoration extends RecyclerView.ItemDecoration {
-    private int spacing;
+    private final int spacing;
 
     public ItemDecoration(int spacing) {
         this.spacing = spacing;
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         outRect.left = spacing;
         outRect.right = spacing;
         outRect.top = spacing;

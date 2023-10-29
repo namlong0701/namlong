@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#615D5D"
+    android:background="#1A1839"
     tools:context=".activity.Thongtinkhachhang">
 <LinearLayout
     android:orientation="vertical"
@@ -26,7 +26,8 @@
         android:layout_marginRight="5dp"
         android:text="Customer Information"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,SpUsage" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter name"
             android:inputType="text"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -56,7 +57,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter phone"
             android:inputType="phone"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +73,8 @@
             android:layout_height="wrap_content"
             android:hint="Enter email"
             android:inputType="textEmailAddress"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="HardcodedText,TouchTargetSizeCheck,VisualLintTextFieldSize"
+            android:importantForAutofill="no" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
@@ -91,7 +93,8 @@
             android:text="Back"
             android:id="@+id/buttontrove"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded" />
         <Button
             android:background="#000"
             android:textColor="#fff"
@@ -100,7 +103,8 @@
             android:text="Confirm"
             android:id="@+id/buttonxacnhan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:ignore="ButtonStyle,HardcodedText" />
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>

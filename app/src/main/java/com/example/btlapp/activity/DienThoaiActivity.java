@@ -1,8 +1,6 @@
 package com.example.btlapp.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,12 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,7 +26,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.btlapp.R;
 import com.example.btlapp.adapter.DienThoaiAdapter;
-import com.example.btlapp.adapter.GiohangAdapter;
 import com.example.btlapp.model.Sanpham;
 import com.example.btlapp.ultil.checkconection;
 import com.example.btlapp.ultil.server;
@@ -40,7 +37,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+/** @noinspection ALL*/
 public class DienThoaiActivity extends AppCompatActivity {
     Toolbar toolbardt;
     ListView lvdt;
@@ -158,8 +157,8 @@ public class DienThoaiActivity extends AppCompatActivity {
             }
         }) { //day dl len server duoi dang Hasmap
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param = new HashMap<String, String>();
+            protected Map<String, String> getParams() {
+                HashMap<String, String> param = new HashMap<>();
                 param.put("idsanpham", String.valueOf(Iddt));
 
                 return param;
@@ -172,13 +171,8 @@ public class DienThoaiActivity extends AppCompatActivity {
     //bắt sự kiện quay về toolbar
     private void ActionToolbar() {
         setSupportActionBar(toolbardt);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbardt.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbardt.setNavigationOnClickListener(v -> finish());
     }
 
     //lay id loai san pham
@@ -188,10 +182,11 @@ public class DienThoaiActivity extends AppCompatActivity {
     }
 
     //khoi tao va gan id vao cac thuoc tinh
+    @SuppressLint("InflateParams")
     private void Anhxa() {
-        toolbardt = (Toolbar) findViewById(R.id.toolbardienthoai);
+        toolbardt = findViewById(R.id.toolbardienthoai);
         setSupportActionBar(toolbardt); // toolbar là một đối tượng androidx.appcompat.widget.Toolbar
-        lvdt = (ListView) findViewById(R.id.listviewdienthoai);
+        lvdt = findViewById(R.id.listviewdienthoai);
         mangdt = new ArrayList<>();
         dienThoaiAdapter = new DienThoaiAdapter(getApplicationContext(), mangdt);
         lvdt.setAdapter(dienThoaiAdapter);
@@ -200,6 +195,7 @@ public class DienThoaiActivity extends AppCompatActivity {
         mHandler = new mHandler();
     }
 
+    @SuppressLint("HandlerLeak")
     public class mHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {

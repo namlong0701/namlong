@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:background="#797A7A"
+            android:background="#1A1839"
             app:titleTextColor="#fafafa"
             app:title="Contact"
             android:id="@+id/toolbarlienhe"
@@ -29,7 +29,8 @@
                 android:textSize="30sp"
                 android:text="Information about us"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
         <LinearLayout
@@ -42,7 +43,8 @@
             <ImageView
                 android:src="@drawable/icondiachi"
                 android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:layout_height="50dp"
+                tools:ignore="ContentDescription" />
             <TextView
                 android:gravity="center"
                 android:layout_marginTop="30dp"
@@ -52,7 +54,8 @@
                 android:textColor="#000"
                 android:text="Address: Ta Thanh Oai- Thanh Tri- Ha Noi "
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText,RtlHardcoded" />
         </LinearLayout>
         <LinearLayout
             android:background="@drawable/boder"
@@ -64,7 +67,8 @@
             <ImageView
                 android:src="@drawable/iconlienhe"
                 android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:layout_height="50dp"
+                tools:ignore="ContentDescription" />
             <TextView
                 android:gravity="center"
                 android:layout_marginTop="30dp"
@@ -74,7 +78,8 @@
                 android:textColor="#000"
                 android:text="Contact phone number: 0971190460"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
         </LinearLayout>
         <LinearLayout
@@ -87,7 +92,8 @@
             <ImageView
                 android:src="@drawable/iconemail"
                 android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:layout_height="50dp"
+                tools:ignore="ContentDescription" />
             <TextView
                 android:gravity="center"
                 android:layout_marginTop="30dp"
@@ -98,7 +104,8 @@
                 android:textColor="#000"
                 android:text="Email: Dpsstore@gmail.com"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
         </LinearLayout>
 

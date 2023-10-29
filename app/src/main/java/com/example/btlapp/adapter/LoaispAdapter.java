@@ -36,13 +36,14 @@ public class LoaispAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-    public class ViewHolder{
+    public static class ViewHolder{
         TextView txttenloaisp;
         ImageView imgloaisp;
     }
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

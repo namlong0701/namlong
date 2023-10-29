@@ -8,7 +8,7 @@
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarlaptop"
-        android:background="#737171"
+        android:background="#1A1839"
         app:titleTextColor="#fff"
         app:title="Laptop"
         android:layout_width="match_parent"

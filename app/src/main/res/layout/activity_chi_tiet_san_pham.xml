@@ -10,19 +10,21 @@
         app:titleTextColor="#fff"
         app:title="Product Details"
         android:id="@+id/toolbarchitietsanpham"
-        android:background="#7A7777"
+        android:background="#1A1839"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/imageviewchitietsanpham"
-            android:src="@mipmap/ic_launcher"
-            android:layout_margin="10dp"
             android:layout_width="180dp"
-            android:layout_height="180dp" />
+            android:layout_height="180dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -35,15 +37,18 @@
                 android:layout_margin="10dp"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
+
             <TextView
-                android:textColor="#EA3737"
                 android:id="@+id/textviewgiachitietsanpham"
-                android:text="Product Price"
-                android:layout_margin="10dp"
-                android:textSize="15sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Product Price"
+                android:textColor="#EA3737"
+                android:textSize="15sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -53,7 +58,8 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/spinner"
                 android:minHeight="48dp"
-                android:textAlignment="center"></Spinner>
+                android:textAlignment="center"
+                tools:ignore="RtlHardcoded"></Spinner>
             <Button
                 android:layout_marginTop="5dp"
                 android:id="@+id/buttondatmua"
@@ -61,7 +67,8 @@
                 android:textSize="10sp"
                 android:text="Add to cart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText,SmallSp,VisualLintButtonSize" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -76,7 +83,8 @@
             android:layout_marginTop="5dp"
             android:text="Product Description"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -87,7 +95,8 @@
                 android:paddingBottom="10dp"
                 android:id="@+id/textviewmotachitietsanpham"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="RtlHardcoded" />
         </ScrollView>
     </LinearLayout>
 </LinearLayout>

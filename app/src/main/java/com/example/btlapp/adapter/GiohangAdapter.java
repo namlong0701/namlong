@@ -1,5 +1,6 @@
 package com.example.btlapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,17 +41,18 @@ public class GiohangAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-    public class ViewHolder{
+    public static class ViewHolder{
         public TextView txttengiohang,txtgiagiohang;
         public ImageView imggiohang;
         public Button btntru,btnvalues,btncong;
     }
 
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder=null;
+        ViewHolder viewHolder;
         if(convertView==null){//nếu view null
-            viewHolder =new ViewHolder();//khởi tạo 1 class viewholder
+            viewHolder = new ViewHolder();//khởi tạo 1 class viewholder
             LayoutInflater inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.dong_giohang,null);//gán dữ liệu dòng giỏ hàng cho vỉew
             //lấy những dl trong class viewholder
@@ -82,66 +84,57 @@ public class GiohangAdapter extends BaseAdapter {
             viewHolder.btntru.setVisibility(View.VISIBLE);
         }else if(sl<=1){
             viewHolder.btntru.setVisibility(View.INVISIBLE);
-        }else if (sl>=1){
+        }else
+        {
             viewHolder.btntru.setVisibility(View.VISIBLE);
             viewHolder.btncong.setVisibility(View.VISIBLE);
         }
         final ViewHolder finalViewHolder = viewHolder;
-        viewHolder.btncong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//bắt sự kiện cho nút cộng
-                int slmoinhat=Integer.parseInt(finalViewHolder.btnvalues.getText().toString())+1;
-                int slhientai= MainActivity.manggiohang.get(position).getSoluongsp();
-                finalViewHolder.btnvalues.setText(slmoinhat+"");
-                //lấy gt hiện tại
-                long giaht= MainActivity.manggiohang.get(position).getGiasp();
-                MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
-                long giamoinhat=(giaht*slmoinhat)/slhientai;
-                //gán các gt mới cho mảng
-                MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
-                DecimalFormat decimalFormat=new DecimalFormat(("###,###.###"));
-                finalViewHolder.txtgiagiohang.setText("Price: "+decimalFormat.format(giohang.getGiasp())+"Đ");
-                com.example.btlapp.activity.Giohang.EventUltil();
-                if(slmoinhat>9){
-                    finalViewHolder.btncong.setVisibility(View.INVISIBLE);//set làm mờ dấu +
-                    finalViewHolder.btntru.setVisibility(View.VISIBLE);
-                    finalViewHolder.btnvalues.setText(String.valueOf(slmoinhat));
-                }
-                else{
-                    finalViewHolder.btncong.setVisibility(View.VISIBLE);//hiển thị bthg
-                    finalViewHolder.btntru.setVisibility(View.VISIBLE);
-                    finalViewHolder.btnvalues.setText(String.valueOf(slmoinhat));
-                }
-                }
-        });
-        viewHolder.btntru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//bắt sự kiện cho nút trừ
-                //lấy sl mới nhất
-                int slmoinhat = Integer.parseInt(finalViewHolder.btnvalues.getText().toString())-1;
-                int slhientai = MainActivity.manggiohang.get(position).getSoluongsp();
-                finalViewHolder.btnvalues.setText(slmoinhat +"");
-                long giaht = MainActivity.manggiohang.get(position).getGiasp();
-                MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
-                // tính giá mới nhất
-                long giamoinhat = (giaht*slmoinhat)/slhientai;
-                //gán gtri cho mảng
-                MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
-                String pattern = "###,###.###";
-                DecimalFormat decimalFormat = new DecimalFormat(pattern);
-                String format = decimalFormat.format(giamoinhat);
-                finalViewHolder.txtgiagiohang.setText("Price: " + format + " Đ");
-                com.example.btlapp.activity.Giohang.EventUltil();
-                if(slmoinhat<2){
-                    finalViewHolder.btncong.setVisibility(View.VISIBLE);
-                    finalViewHolder.btntru.setVisibility(View.INVISIBLE);//ẩn nút trừ
-                    finalViewHolder.btnvalues.setText((String.valueOf(slmoinhat)));
-                }else{
-                    finalViewHolder.btncong.setVisibility(View.VISIBLE);
-                    finalViewHolder.btntru.setVisibility(View.VISIBLE);
-                    finalViewHolder.btnvalues.setText((String.valueOf(slmoinhat)));
-                }
+        viewHolder.btncong.setOnClickListener(v -> {//bắt sự kiện cho nút cộng
+            int slmoinhat=Integer.parseInt(finalViewHolder.btnvalues.getText().toString())+1;
+            int slhientai= MainActivity.manggiohang.get(position).getSoluongsp();
+            finalViewHolder.btnvalues.setText(slmoinhat+"");
+            //lấy gt hiện tại
+            long giaht= MainActivity.manggiohang.get(position).getGiasp();
+            MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
+            long giamoinhat=(giaht*slmoinhat)/slhientai;
+            //gán các gt mới cho mảng
+            MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
+            DecimalFormat decimalFormat1 =new DecimalFormat(("###,###.###"));
+            finalViewHolder.txtgiagiohang.setText("Price: "+ decimalFormat1.format(giohang.getGiasp())+"Đ");
+            com.example.btlapp.activity.Giohang.EventUltil();
+            if(slmoinhat>9){
+                finalViewHolder.btncong.setVisibility(View.INVISIBLE);//set làm mờ dấu +
             }
+            else{
+                finalViewHolder.btncong.setVisibility(View.VISIBLE);//hiển thị bthg
+            }
+            finalViewHolder.btntru.setVisibility(View.VISIBLE);
+            finalViewHolder.btnvalues.setText(String.valueOf(slmoinhat));
+        });
+        viewHolder.btntru.setOnClickListener(v -> {//bắt sự kiện cho nút trừ
+            //lấy sl mới nhất
+            int slmoinhat = Integer.parseInt(finalViewHolder.btnvalues.getText().toString())-1;
+            int slhientai = MainActivity.manggiohang.get(position).getSoluongsp();
+            finalViewHolder.btnvalues.setText(slmoinhat +"");
+            long giaht = MainActivity.manggiohang.get(position).getGiasp();
+            MainActivity.manggiohang.get(position).setSoluongsp(slmoinhat);
+            // tính giá mới nhất
+            long giamoinhat = (giaht*slmoinhat)/slhientai;
+            //gán gtri cho mảng
+            MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
+            String pattern = "###,###.###";
+            DecimalFormat decimalFormat12 = new DecimalFormat(pattern);
+            String format = decimalFormat12.format(giamoinhat);
+            finalViewHolder.txtgiagiohang.setText("Price: " + format + " Đ");
+            com.example.btlapp.activity.Giohang.EventUltil();
+            finalViewHolder.btncong.setVisibility(View.VISIBLE);
+            if(slmoinhat<2){
+                finalViewHolder.btntru.setVisibility(View.INVISIBLE);//ẩn nút trừ
+            }else{
+                finalViewHolder.btntru.setVisibility(View.VISIBLE);
+            }
+            finalViewHolder.btnvalues.setText((String.valueOf(slmoinhat)));
         });
         return convertView;
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -19,7 +20,8 @@
                 android:adjustViewBounds="true"
                 android:id="@+id/imageviewlaptop"
                 android:layout_width="100dp"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp"
+                tools:ignore="ContentDescription" />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -32,22 +34,26 @@
                     android:textSize="18sp"
                     android:text="Product's Name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText" />
+
                 <TextView
-                    android:layout_margin="5dp"
-                    android:textSize="18sp"
-                    android:text="Product Price"
                     android:id="@+id/textviewgialaptop"
-                    android:textColor="#f20"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Product Price"
+                    android:textColor="#f20"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
                 <TextView
                     android:layout_margin="5dp"
                     android:textSize="18sp"
                     android:text="Product Description"
                     android:id="@+id/textviewmotalaptop"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
         </LinearLayout>

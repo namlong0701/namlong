@@ -1,11 +1,10 @@
 package com.example.btlapp.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
@@ -40,7 +39,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
+/** @noinspection ALL*/
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     ViewFlipper viewFlipper;
@@ -91,49 +92,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void CatchOnItemListView() {
-        listViewmanhinhchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        listViewmanhinhchinh.setOnItemClickListener((parent, view, position, id) -> {
 
-                switch (position){
-                    case 0:
-                        if(checkconection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent =new Intent(MainActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        }else{
-                            checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
-                        }
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case 1:
-                        if(checkconection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent =new Intent(MainActivity.this,DienThoaiActivity.class);
-                            intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
-                            startActivity(intent);
-                        }else{
-                            checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
-                        }
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case 2:
-                        if(checkconection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent =new Intent(MainActivity.this,LaptopActivity.class);
-                            intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
-                            startActivity(intent);
-                        }else{
-                            checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
-                        }
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case 3:
-                        if(checkconection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent =new Intent(MainActivity.this,LienHeActivity.class);
-                            startActivity(intent);
-                        }else{
-                            checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
-                        }
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+            switch (position){
+                case 0:
+                    if(checkconection.haveNetworkConnection(getApplicationContext())){
+                        Intent intent =new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case 1:
+                    if(checkconection.haveNetworkConnection(getApplicationContext())){
+                        Intent intent =new Intent(MainActivity.this,DienThoaiActivity.class);
+                        intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
+                        startActivity(intent);
+                    }else{
+                        checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case 2:
+                    if(checkconection.haveNetworkConnection(getApplicationContext())){
+                        Intent intent =new Intent(MainActivity.this,LaptopActivity.class);
+                        intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
+                        startActivity(intent);
+                    }else{
+                        checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case 3:
+                    if(checkconection.haveNetworkConnection(getApplicationContext())){
+                        Intent intent =new Intent(MainActivity.this,LienHeActivity.class);
+                        startActivity(intent);
+                    }else{
+                        checkconection.ShowToast_Short(getApplicationContext(),"No Internet");
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
 //                    case 4:
 //                        if(checkconection.haveNetworkConnection(getApplicationContext())){
 //                            Intent intent =new Intent(MainActivity.this,ThongTinActivity.class);
@@ -143,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
 //                        }
 //                        drawerLayout.closeDrawer(GravityCompat.START);
 //                        break;
-                }
             }
         });
     }
@@ -151,39 +149,33 @@ public class MainActivity extends AppCompatActivity {
 
     private void GetDuLieuSPMoiNhat() {
         RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(server.Duongdansanphammonhat, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                if(response!=null){
-                    int ID=0;
-                    String Tensanpham="";
-                    Integer Giasanpham=0;
-                    String Hinhanhsanpham="";
-                    String Motasanpham="";
-                    int IDsanpham=0;
-                    for(int i=0;i<response.length();i++){
-                        try {
-                            JSONObject jsonObject=response.getJSONObject(i);
-                            ID=jsonObject.getInt("id");
-                            Tensanpham=jsonObject.getString("tensanpham");
-                            Giasanpham=jsonObject.getInt("giasanpham");
-                            Hinhanhsanpham=jsonObject.getString("hinhanhsanpham");
-                            Motasanpham=jsonObject.getString("motasanpham");
-                            IDsanpham=jsonObject.getInt("idsanpham");
-                            mangsanpham.add(new Sanpham(ID,Tensanpham,Giasanpham,Hinhanhsanpham,Motasanpham,IDsanpham));
-                            sanphamAdapter.notifyDataSetChanged();
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-
+        @SuppressLint("NotifyDataSetChanged") JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(server.Duongdansanphammonhat, response -> {
+            if(response!=null){
+                int ID;
+                String Tensanpham;
+                int Giasanpham;
+                String Hinhanhsanpham;
+                String Motasanpham;
+                int IDsanpham;
+                for(int i=0;i<response.length();i++){
+                    try {
+                        JSONObject jsonObject=response.getJSONObject(i);
+                        ID=jsonObject.getInt("id");
+                        Tensanpham=jsonObject.getString("tensanpham");
+                        Giasanpham=jsonObject.getInt("giasanpham");
+                        Hinhanhsanpham=jsonObject.getString("hinhanhsanpham");
+                        Motasanpham=jsonObject.getString("motasanpham");
+                        IDsanpham=jsonObject.getInt("idsanpham");
+                        mangsanpham.add(new Sanpham(ID,Tensanpham,Giasanpham,Hinhanhsanpham,Motasanpham,IDsanpham));
+                        sanphamAdapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
                     }
+
                 }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        }, error -> {
 
-            }
         });
         requestQueue.add(jsonArrayRequest);
     }
@@ -211,15 +203,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void ActionBar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
 
     private void Anhxa(){

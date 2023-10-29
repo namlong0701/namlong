@@ -31,39 +31,20 @@ public class Sanpham implements Serializable {
         return Tensanpham;
     }
 
-    public void setTensanpham(String tensanpham) {
-        Tensanpham = tensanpham;
-    }
-
     public Integer getGiasanpham() {
         return Giasanpham;
-    }
-
-    public void setGiasanpham(int giasanpham) {
-        Giasanpham = giasanpham;
     }
 
     public String getHinhanhsanpham() {
         return Hinhanhsanpham;
     }
 
-    public void setHinhanhsanpham(String hinhanhsanpham) {
-        Hinhanhsanpham = hinhanhsanpham;
-    }
-
     public String getMotasanpham() {
         return Motasanpham;
-    }
-
-    public void setMotasanpham(String motasanpham) {
-        Motasanpham = motasanpham;
     }
 
     public int getIDSanpham() {
         return IDSanpham;
     }
 
-    public void setIDSanpham(int IDSanpham) {
-        this.IDSanpham = IDSanpham;
-    }
 }

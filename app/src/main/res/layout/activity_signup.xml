@@ -7,17 +7,18 @@
     tools:context=".activity.login"
     android:padding="16dp"
     android:orientation="vertical"
+    android:background="#1A1839"
     >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DPsStore"
         android:textStyle="bold"
-        android:textColor="@color/cardview_dark_background"
+        android:textColor="#fff"
         android:textSize="30dp"
         android:gravity="center"
 
-        />
+        tools:ignore="HardcodedText,SpUsage" />
 
     <ImageView
         android:layout_width="100dp"
@@ -26,65 +27,145 @@
         android:src="@drawable/icondophins"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        />
+        tools:ignore="ContentDescription" />
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconaccount"
+            tools:ignore="ContentDescription" />
+        <EditText
+            android:textColor="#fff"
+            android:textColorHint="#ccc"
+            android:inputType="text"
+            android:textStyle="italic"
+            android:id="@+id/FirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="first name"
+            android:minHeight="48dp"
+            tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
-    <EditText
-        android:inputType="text"
-        android:textStyle="italic"
-        android:id="@+id/FirstName"
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:hint="first name"
-        android:minHeight="48dp" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconaccount"
+            tools:ignore="ContentDescription" />
+        <EditText
+            android:textColor="#fff"
+            android:textColorHint="#ccc"
+            android:inputType="text"
+            android:textStyle="italic"
+            android:id="@+id/LastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="last name"
+            android:minHeight="48dp"
+            tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+    </LinearLayout>
+  <LinearLayout
+      android:layout_marginTop="15dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <ImageView
+          android:layout_gravity="center"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:src="@drawable/iconphone"
+          tools:ignore="ContentDescription" />
+      <EditText
+          android:textColor="#fff"
+          android:textColorHint="#ccc"
+          android:textStyle="italic"
+          android:id="@+id/Phone"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="phone"
+          android:inputType="phone"
+          android:minHeight="48dp"
+          tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+  </LinearLayout>
 
-    <EditText
-        android:inputType="text"
-        android:textStyle="italic"
-        android:id="@+id/LastName"
+    <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="last name"
-        android:minHeight="48dp" />
-    <EditText
-        android:textStyle="italic"
-        android:id="@+id/Phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="phone"
-        android:inputType="phone"
-        android:minHeight="48dp" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconemail_"
+            tools:ignore="ContentDescription" />
+        <EditText
+            android:textColor="#fff"
+            android:textColorHint="#ccc"
+            android:inputType="textEmailAddress"
+            android:textStyle="italic"
+            android:id="@+id/EmailSign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="email address"
+            android:minHeight="48dp"
+            tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+    </LinearLayout>
+ <LinearLayout
+     android:layout_marginTop="15dp"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+     <ImageView
+         android:layout_gravity="center"
+         android:layout_width="30dp"
+         android:layout_height="30dp"
+         android:src="@drawable/iconaccount"
+         tools:ignore="ContentDescription" />
 
-    <EditText
-        android:inputType="textEmailAddress"
-        android:textStyle="italic"
-        android:id="@+id/EmailSign"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="email address"
-        android:minHeight="48dp" />
-    <EditText
-        android:inputType="text"
-        android:textStyle="italic"
-        android:id="@+id/User"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="user name"
-        android:minHeight="48dp" />
+     <EditText
+         android:textColor="#fff"
+         android:textColorHint="#ccc"
+         android:inputType="text"
+         android:textStyle="italic"
+         android:id="@+id/User"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:hint="user name"
+         android:minHeight="48dp"
+         tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+ </LinearLayout>
+ <LinearLayout
+     android:layout_marginTop="15dp"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+     <ImageView
+         android:layout_gravity="center"
+         android:layout_width="30dp"
+         android:layout_height="30dp"
+         android:src="@drawable/iconpassword"
+         tools:ignore="ContentDescription" />
 
-    <EditText
-        android:inputType="text"
-        android:textStyle="italic"
-        android:id="@+id/PassSign"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="password"
-        android:minHeight="48dp" />
+     <EditText
+         android:textColor="#fff"
+         android:textColorHint="#ccc"
+         android:inputType="text"
+         android:textStyle="italic"
+         android:id="@+id/PassSign"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:hint="password"
+         android:minHeight="48dp"
+         tools:ignore="HardcodedText,VisualLintTextFieldSize"
+         android:importantForAutofill="no" />
+ </LinearLayout>
+
 
 
 
@@ -93,18 +174,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#065FE6"
         android:text="Sign Up"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
 
     <Button
         android:id="@+id/btnDacotaikhoan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#065FE6"
         android:text="Already have an account"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
 
 
 
